@@ -8,6 +8,7 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications import MobileNetV2
 from keras.layers import Input
+from keras.models import Model
 import joblib
 import os
 import shutil
