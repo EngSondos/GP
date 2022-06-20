@@ -75,16 +75,16 @@ def predict(filenames):
               + r'/runs/train/yolov5s_results/weights/best.pt" --img ' + str(o_size) + ' --conf 0.68 --source "' +
               "C:/Users/sondos/StudioProjects/Medical/input/" + '" --save-txt')
 
+    # load classification model
+    base_model = MobileNetV2(include_top=False, input_shape=(224, 224, 3))
+    mobileNet = Model(base_model.input, base_model.get_layer('out_relu').output)
+
+    # load logistic regression model
+    logistic_Model = joblib.load(logistic_path)
+
     for filename in filenames:
 
         original_image = cv2.imread(input_dir + filename)
-
-        # load classification model
-        base_model = MobileNetV2(include_top=False, input_shape=(224, 224, 3))
-        mobileNet = Model(base_model.input, base_model.get_layer('out_relu').output)
-
-        # load logistic regression model
-        logistic_Model = joblib.load(logistic_path)
 
         # get yolo prediction and loop through them
         if os.path.exists(yolo_dir + r'/runs/detect/exp/labels/' + os.path.splitext(filename)[0] + '.txt'):
