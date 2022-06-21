@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final request = http.MultipartRequest(
         "POST",
         Uri.parse(
-            "https://b569-156-208-74-23.eu.ngrok.io/upload")); //ngrok link +/upload
+            "https://e4f4-156-208-149-26.eu.ngrok.io/upload")); //ngrok link +/upload
     final headers = {"Content-type": "multipart/form-data"};
     // selectedImages![0] = images![0];
     for (int i = 0; i < images!.length; i++) {
